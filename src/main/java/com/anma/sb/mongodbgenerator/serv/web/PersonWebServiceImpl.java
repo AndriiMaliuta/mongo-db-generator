@@ -52,7 +52,8 @@ public class PersonWebServiceImpl implements PersonWebService {
                 PersonWebArray temp = template.getForObject(URI.create(next), PersonWebArray.class);
                 length = temp.getData().length;
                 if (length < 1) {
-                    return allPersons;
+//                    return allPersons;
+                    break;
                 } else {
                     allPersons.addAll(Arrays.asList(temp.getData()));
                     next = temp.getMeta().getPagination().getLinks().getNext();

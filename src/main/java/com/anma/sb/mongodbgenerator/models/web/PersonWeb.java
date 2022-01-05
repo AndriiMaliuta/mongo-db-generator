@@ -121,4 +121,23 @@ public class PersonWeb {
     public void setCountryId(long countryId) {
         this.countryId = countryId;
     }
+
+    @Override
+    public String toString() {
+        return "PersonWeb{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", status='" + status + '\'' +
+                ", age=" + age +
+                ", cars=" + cars +
+                ", countryCode='" + countryCode + '\'' +
+                ", hasChildren=" + hasChildren +
+                ", engaged=" + engaged +
+                ", createdAt=" + createdAt +
+                ", countryId=" + countryId +
+                '}';
+    }
 }

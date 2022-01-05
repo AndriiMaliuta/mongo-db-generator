@@ -140,4 +140,24 @@ public class Person {
     public void setCountryId(String countryId) {
         this.countryId = countryId;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "personId='" + personId + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", status='" + status + '\'' +
+                ", age=" + age +
+                ", cars=" + cars +
+                ", countryCode='" + countryCode + '\'' +
+                ", hasChildren=" + hasChildren +
+                ", engaged=" + engaged +
+                ", createdAt=" + createdAt +
+                ", countryId='" + countryId + '\'' +
+                '}';
+    }
 }

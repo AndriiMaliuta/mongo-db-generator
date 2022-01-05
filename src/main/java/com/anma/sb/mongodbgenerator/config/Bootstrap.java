@@ -1,10 +1,12 @@
 package com.anma.sb.mongodbgenerator.config;
 
-import com.anma.sb.mongodbgenerator.models.Country;
+import com.anma.sb.mongodbgenerator.repo.CatRepo;
 import com.anma.sb.mongodbgenerator.repo.CountryRepo;
 import com.anma.sb.mongodbgenerator.repo.PersonRepo;
+import com.anma.sb.mongodbgenerator.serv.convert.CatToWebCat;
 import com.anma.sb.mongodbgenerator.serv.convert.CountryConverter;
 import com.anma.sb.mongodbgenerator.serv.convert.PersonConverter;
+import com.anma.sb.mongodbgenerator.serv.web.CatService;
 import com.anma.sb.mongodbgenerator.serv.web.CountryService;
 import com.anma.sb.mongodbgenerator.serv.web.PersonWebService;
 import org.slf4j.Logger;
@@ -16,23 +18,31 @@ import org.springframework.stereotype.Component;
 public class Bootstrap implements CommandLineRunner {
 
     private final PersonRepo personRepo;
+    private final CatRepo catRepo;
     private final CountryRepo countryRepo;
     private final PersonWebService personService;
     private final PersonConverter personConverter;
+    private final CatToWebCat catToWebCat;
     private final CountryConverter countryConverter;
     private final CountryService countryService;
+    private final CatService catService;
 
     private final Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
-    public Bootstrap(PersonRepo personRepo, CountryRepo countryRepo,
+    public Bootstrap(PersonRepo personRepo, CatRepo catRepo, CountryRepo countryRepo,
                      PersonWebService personService, PersonConverter personConverter,
-                     CountryConverter countryConverter, CountryService countryService) {
+                     CatToWebCat catToWebCat, CountryConverter countryConverter,
+                     CountryService countryService,
+                     CatService catService) {
         this.personRepo = personRepo;
+        this.catRepo = catRepo;
         this.countryRepo = countryRepo;
         this.personService = personService;
         this.personConverter = personConverter;
+        this.catToWebCat = catToWebCat;
         this.countryConverter = countryConverter;
         this.countryService = countryService;
+        this.catService = catService;
     }
 
     @Override
@@ -43,17 +53,23 @@ public class Bootstrap implements CommandLineRunner {
 
     private void loadData() {
 
+
+        // Create CATS
+        catService.allCats().forEach(catWeb -> {
+            catRepo.save(catToWebCat.convert(catWeb));
+        });
+
+
         // Create Persons
-//        countryRepo.findAll().forEach(System.out::println);
 //        personService.allPersons().forEach(p -> {
 //            personRepo.save(personConverter.convert(p));
 //        });
 
         // create Countries
-        countryService.allCountries().forEach( cw -> {
-            Country country = countryConverter.convert(cw);
-            countryRepo.save(country);
-        });
+//        countryService.allCountries().forEach( cw -> {
+//            Country country = countryConverter.convert(cw);
+//            countryRepo.save(country);
+//        });
 
     }
 }

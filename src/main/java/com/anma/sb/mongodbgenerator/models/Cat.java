@@ -26,6 +26,28 @@ public class Cat {
     private String personId;
     private String countryCodes;
 
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "catId='" + catId + '\'' +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", breed='" + breed + '\'' +
+                ", registry='" + registry + '\'' +
+                ", origin='" + origin + '\'' +
+                ", wikipediaUrl='" + wikipediaUrl + '\'' +
+                ", age=" + age +
+                ", indoor=" + indoor +
+                ", adaptability=" + adaptability +
+                ", dogFriendly=" + dogFriendly +
+                ", intelligence=" + intelligence +
+                ", hairless=" + hairless +
+                ", personId='" + personId + '\'' +
+                ", countryCodes='" + countryCodes + '\'' +
+                '}';
+    }
+
     public String getCatId() {
         return catId;
     }

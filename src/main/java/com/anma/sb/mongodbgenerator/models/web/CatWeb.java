@@ -24,6 +24,7 @@ public class CatWeb {
     private int dogFriendly;
     private int intelligence;
     private int hairless;
+    private String personId;
 
     public long getCatId() {
         return catId;
@@ -143,5 +144,34 @@ public class CatWeb {
 
     public void setHairless(int hairless) {
         this.hairless = hairless;
+    }
+
+    @Override
+    public String toString() {
+        return "CatWeb{" +
+                "catId=" + catId +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", breed='" + breed + '\'' +
+                ", registry='" + registry + '\'' +
+                ", origin='" + origin + '\'' +
+                ", countryCodes='" + countryCodes + '\'' +
+                ", wikipediaUrl='" + wikipediaUrl + '\'' +
+                ", age=" + age +
+                ", indoor=" + indoor +
+                ", adaptability=" + adaptability +
+                ", dogFriendly=" + dogFriendly +
+                ", intelligence=" + intelligence +
+                ", hairless=" + hairless +
+                '}';
+    }
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
     }
 }

@@ -34,9 +34,9 @@ public class CountryServiceImpl implements CountryService {
 //        final String URL = environment.getProperty("links.countries.name");
         final String URL = "https://restcountries.com/v3.1/name/";
         JsonFactory factoryBuilder = new JsonFactoryBuilder().build();
-        CountryWeb countryWeboBJ = template.getForObject(URL + name, CountryWeb.class);
+        CountryWeb countryWeb = template.getForObject(URL + name, CountryWeb.class);
 //        factoryBuilder.createParser(countryWeb)
-        return countryWeboBJ;
+        return countryWeb;
     }
 
     @Override
