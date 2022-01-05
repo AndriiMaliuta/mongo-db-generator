@@ -31,8 +31,14 @@ public class CityServiceImpl implements CityService {
         List<String> capitals = countryRepo.findAll()
                 .stream().map(Country::getCapital).collect(Collectors.toList());
         capitals.forEach(cap -> {
-            CityWeb city = template.getForObject(URL + cap, CityWeb.class);
-            cities.add(city);
+            try {
+                if (cap != null) {
+                    CityWeb[] caps = template.getForObject(URL + cap, CityWeb[].class);
+                    cities.add(caps[0]);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         return cities;
