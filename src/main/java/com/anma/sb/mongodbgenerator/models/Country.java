@@ -18,6 +18,7 @@ public class Country {
 //    private Tld tld;
     private String name;
 //    @Field(name = "continentName")
+    private String unMember;
     private String continentName;
     private String region;
     private String capital;
@@ -128,5 +129,13 @@ public class Country {
 
     public void setIndependent(boolean independent) {
         this.independent = independent;
+    }
+
+    public String getUnMember() {
+        return unMember;
+    }
+
+    public void setUnMember(String unMember) {
+        this.unMember = unMember;
     }
 }

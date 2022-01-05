@@ -6,17 +6,18 @@ import java.time.LocalDateTime;
 
 public class CommentWeb {
 
-    public long id;
+    public String id;
     public String body;
     public String category;
     public LocalDateTime createdAt;
-    @JsonProperty(value = "author_id") public long authorId;
+    @JsonProperty(value = "authorId")
+    public String authorId;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -44,11 +45,11 @@ public class CommentWeb {
         this.createdAt = createdAt;
     }
 
-    public long getAuthorId() {
+    public String getAuthorId() {
         return authorId;
     }
 
-    public void setAuthorId(long authorId) {
+    public void setAuthorId(String authorId) {
         this.authorId = authorId;
     }
 }

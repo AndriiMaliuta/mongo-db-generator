@@ -16,6 +16,7 @@ public class Cat {
     private String breed;
     private String registry;
     private String origin;
+    private String wikipediaUrl;
     private int age;
     private int indoor;
     private int adaptability;
@@ -23,6 +24,7 @@ public class Cat {
     private int intelligence;
     private int hairless;
     private String personId;
+    private String countryCodes;
 
     public String getCatId() {
         return catId;
@@ -134,5 +136,21 @@ public class Cat {
 
     public void setPersonId(String personId) {
         this.personId = personId;
+    }
+
+    public String getCountryCodes() {
+        return countryCodes;
+    }
+
+    public void setCountryCodes(String countryCodes) {
+        this.countryCodes = countryCodes;
+    }
+
+    public String getWikipediaUrl() {
+        return wikipediaUrl;
+    }
+
+    public void setWikipediaUrl(String wikipediaUrl) {
+        this.wikipediaUrl = wikipediaUrl;
     }
 }

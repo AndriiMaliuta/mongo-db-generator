@@ -66,21 +66,22 @@ public class PersonWebServiceImpl implements PersonWebService {
     }
 
     @Override
-    public List<Long> personIds() {
+    public List<String> personIds() {
         return personRepo.findAll()
                 .stream()
-                .map(Person::getId)
+                .map(Person::getPersonId)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Long getPersRandomId() {
+    public String getPersRandomId() {
         return personIds().get(
                 new Random().nextInt(personRepo.findAll().size()));
     }
 
     @Override
     public List<PersonWeb> allPersonsClient() {
+        //todo
         return null;
     }
 }
