@@ -10,19 +10,20 @@ import java.time.LocalDateTime;
 public class City {
 
     @Id
-    private long id;
+    @Field("cityId")
+    private String id;
     private String name;
-    @Field(name = "country_code")
+    @Field(name = "countryCode")
     private String code;
     private String continent;
-    @Field(name = "created_at") private LocalDateTime createdAt;
-    @Field(name = "country_id") private long countryId;
+    private LocalDateTime createdAt;
+    private String countryId;
     private long population;
 
     public City() {
     }
 
-    public City(long id, String name, String code, String continent, LocalDateTime createdAt, long countryId, long population) {
+    public City(String id, String name, String code, String continent, LocalDateTime createdAt, String countryId, long population) {
         this.id = id;
         this.name = name;
         this.code = code;
@@ -32,11 +33,11 @@ public class City {
         this.population = population;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -72,11 +73,11 @@ public class City {
         this.createdAt = createdAt;
     }
 
-    public long getCountryId() {
+    public String getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(long countryId) {
+    public void setCountryId(String countryId) {
         this.countryId = countryId;
     }
 

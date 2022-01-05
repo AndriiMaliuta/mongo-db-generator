@@ -2,6 +2,7 @@ package com.anma.sb.mongodbgenerator.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
@@ -12,20 +13,19 @@ public class Person {
     private String personId;
     private Long id;
     private String name;
-//    @Column(name = "full_name")
     private String fullName;
     private String email;
     private String gender;
     private String status;
     private int age;
     private int cars;
-//    @Column(name="country_code")
     private String countryCode;
     private boolean hasChildren;
     private boolean engaged;
     private LocalDateTime createdAt = LocalDateTime.now();
 //    private List<Cat> cats;
-    private long countryId;
+//    @Field(name="country_id")
+    private String countryId;
 //    private Country country;
 
 
@@ -133,11 +133,11 @@ public class Person {
         this.createdAt = createdAt;
     }
 
-    public long getCountryId() {
+    public String getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(long countryId) {
+    public void setCountryId(String countryId) {
         this.countryId = countryId;
     }
 }

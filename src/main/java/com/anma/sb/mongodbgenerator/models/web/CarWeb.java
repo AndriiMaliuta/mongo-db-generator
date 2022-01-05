@@ -11,7 +11,9 @@ public class CarWeb {
     private String registry;
     private String brand;
     private String origin;
-    @JsonProperty(value = "country_codes") private String countryCodes;
+    @JsonProperty(value = "country_codes")
+    private String countryCodes;
     private int age;
-    @JsonProperty(value = "person_id") private long personId;
+    @JsonProperty(value = "person_id")
+    private String personId;
 }

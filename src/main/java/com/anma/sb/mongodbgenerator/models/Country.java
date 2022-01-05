@@ -2,12 +2,14 @@ package com.anma.sb.mongodbgenerator.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document
 public class Country {
 
     @Id
-    private int id;
+    @Field("countryId")
+    private String id;
     private long area;
     private long population;
     private String status;
@@ -15,7 +17,8 @@ public class Country {
     private String code;
 //    private Tld tld;
     private String name;
-//    @Column(name = "continent_name") private String continentName;
+//    @Field(name = "continentName")
+    private String continentName;
     private String region;
     private String capital;
     private String languages;
@@ -23,11 +26,11 @@ public class Country {
     private String continents;
     private boolean independent;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
