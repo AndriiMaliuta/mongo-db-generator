@@ -1,41 +1,22 @@
-package com.anma.sb.mongodbgenerator.models;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.anma.sb.mongodbgenerator.models.web;
 
 import java.time.LocalDateTime;
 
-@Document
-public class Person {
+public class PersonWeb {
 
-    @Id
-    private String personId;
     private Long id;
     private String name;
-//    @Column(name = "full_name")
     private String fullName;
     private String email;
     private String gender;
     private String status;
     private int age;
     private int cars;
-//    @Column(name="country_code")
     private String countryCode;
     private boolean hasChildren;
     private boolean engaged;
     private LocalDateTime createdAt = LocalDateTime.now();
-//    private List<Cat> cats;
     private long countryId;
-//    private Country country;
-
-
-    public String getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(String personId) {
-        this.personId = personId;
-    }
 
     public Long getId() {
         return id;

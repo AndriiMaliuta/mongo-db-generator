@@ -1,5 +1,6 @@
 package com.anma.sb.mongodbgenerator.config;
 
+import com.anma.sb.mongodbgenerator.models.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,8 @@ public class Bootstrap implements CommandLineRunner {
     }
 
     private void loadData() {
+
+
 
 
     }
