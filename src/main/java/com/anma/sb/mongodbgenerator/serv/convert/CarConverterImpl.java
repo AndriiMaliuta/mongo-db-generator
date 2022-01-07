@@ -23,8 +23,8 @@ public class CarConverterImpl implements CarConverter {
     @Override
     public Car convert(CarWeb carWeb) {
         Car car = new Car();
-        car.setCarId(car.getCarId());
-        car.setId(UUID.randomUUID().toString());
+        car.setCarId(carWeb.getCarId());
+//        car.setId(UUID.randomUUID().toString());
         car.setAge(RandomUtils.nextInt(0, 30));
         car.setModel(carWeb.getBrand());   //brand -> model
         car.setPersonId(personWebService.getPersRandomId());

@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 public class Car {
 
     @Id
-    private long carId;
     private String id;
+    private long carId;
     private String model;
     private String color;
     private String registry;
@@ -21,6 +21,23 @@ public class Car {
     private int maxSpeed;
     private int age;
     private String personId;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "carId=" + carId +
+                ", id='" + id + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", registry='" + registry + '\'' +
+                ", origin='" + origin + '\'' +
+                ", createdAt=" + createdAt +
+                ", countryCodes='" + countryCodes + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", age=" + age +
+                ", personId='" + personId + '\'' +
+                '}';
+    }
 
     public long getCarId() {
         return carId;

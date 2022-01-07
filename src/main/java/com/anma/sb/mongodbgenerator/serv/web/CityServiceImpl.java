@@ -38,7 +38,8 @@ public class CityServiceImpl implements CityService {
             try {
                 if (cap != null) {
 
-                    CityWeb[] cityWebArr = webClient.get().uri(URI.create(URL + cap)).retrieve().bodyToMono(CityWeb[].class).block();
+                    CityWeb[] cityWebArr =
+                            webClient.get().uri(URI.create(URL + cap)).retrieve().bodyToMono(CityWeb[].class).block();   //todo - error with space in name
                     CityWeb cityWeb = cityWebArr[0];
 
                     System.out.println(cityWeb);

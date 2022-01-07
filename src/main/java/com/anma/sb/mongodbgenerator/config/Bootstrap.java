@@ -1,18 +1,9 @@
 package com.anma.sb.mongodbgenerator.config;
 
-import com.anma.sb.mongodbgenerator.models.City;
-import com.anma.sb.mongodbgenerator.repo.CatRepo;
-import com.anma.sb.mongodbgenerator.repo.CityRepo;
-import com.anma.sb.mongodbgenerator.repo.CountryRepo;
-import com.anma.sb.mongodbgenerator.repo.PersonRepo;
-import com.anma.sb.mongodbgenerator.serv.convert.CatToWebCat;
-import com.anma.sb.mongodbgenerator.serv.convert.CityConverter;
-import com.anma.sb.mongodbgenerator.serv.convert.CountryConverter;
-import com.anma.sb.mongodbgenerator.serv.convert.PersonConverter;
-import com.anma.sb.mongodbgenerator.serv.web.CatService;
-import com.anma.sb.mongodbgenerator.serv.web.CityService;
-import com.anma.sb.mongodbgenerator.serv.web.CountryService;
-import com.anma.sb.mongodbgenerator.serv.web.PersonWebService;
+import com.anma.sb.mongodbgenerator.models.Car;
+import com.anma.sb.mongodbgenerator.repo.*;
+import com.anma.sb.mongodbgenerator.serv.convert.*;
+import com.anma.sb.mongodbgenerator.serv.web.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,13 +13,16 @@ import org.springframework.stereotype.Component;
 public class Bootstrap implements CommandLineRunner {
 
     private final PersonRepo personRepo;
+    private final CarService carService;
     private final CatRepo catRepo;
+    private final CarRepo carRepo;
     private final CountryRepo countryRepo;
     private final CityRepo cityRepo;
     private final PersonWebService personService;
     private final PersonConverter personConverter;
     private final CatToWebCat catToWebCat;
     private final CountryConverter countryConverter;
+    private final CarConverter carConverter;
     private final CityConverter cityConverter;
     private final CountryService countryService;
     private final CityService cityService;
@@ -36,20 +30,25 @@ public class Bootstrap implements CommandLineRunner {
 
     private final Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
-    public Bootstrap(PersonRepo personRepo, CatRepo catRepo, CountryRepo countryRepo,
+    public Bootstrap(PersonRepo personRepo, CarService carService,
+                     CatRepo catRepo, CarRepo carRepo, CountryRepo countryRepo,
                      CityRepo cityRepo, PersonWebService personService,
                      PersonConverter personConverter,
                      CatToWebCat catToWebCat, CountryConverter countryConverter,
-                     CityConverter cityConverter, CountryService countryService,
+                     CarConverter carConverter, CityConverter cityConverter,
+                     CountryService countryService,
                      CityService cityService, CatService catService) {
         this.personRepo = personRepo;
+        this.carService = carService;
         this.catRepo = catRepo;
+        this.carRepo = carRepo;
         this.countryRepo = countryRepo;
         this.cityRepo = cityRepo;
         this.personService = personService;
         this.personConverter = personConverter;
         this.catToWebCat = catToWebCat;
         this.countryConverter = countryConverter;
+        this.carConverter = carConverter;
         this.cityConverter = cityConverter;
         this.countryService = countryService;
         this.cityService = cityService;
@@ -64,13 +63,21 @@ public class Bootstrap implements CommandLineRunner {
 
     private void loadData() {
 
+        // CAR
+
+        carService.alLCars().forEach(cw -> {
+            Car car = carConverter.convert(cw);
+            System.out.println(car);
+            carRepo.save(car);
+        });
+
         // City
 
-        cityService.allCities().forEach(cw -> {
-            City city = cityConverter.convert(cw);
-            System.out.println(city);
-            cityRepo.save(city);
-        });
+//        cityService.allCities().forEach(cw -> {
+//            City city = cityConverter.convert(cw);
+//            System.out.println(city);
+//            cityRepo.save(city);
+//        });
 
         // Create CATS
 //        catService.allCats().forEach(catWeb -> {
