@@ -14,7 +14,6 @@ public class CarWeb {
     @JsonProperty(value = "countryCodes")
     private String countryCodes;
     private int age;
-    @JsonProperty(value = "personId")
     private String personId;
 
     public long getCarId() {

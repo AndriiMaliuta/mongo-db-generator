@@ -1,6 +1,7 @@
 package com.anma.sb.mongodbgenerator.serv.web;
 
 
+import com.anma.sb.mongodbgenerator.models.Person;
 import com.anma.sb.mongodbgenerator.models.web.PersonWeb;
 
 import java.util.List;
@@ -12,4 +13,7 @@ public interface PersonWebService {
     String getPersRandomId();
     List<PersonWeb> allPersonsClient();
     public List<String> personIds();
+    Person addPerson();
+    String getRandomGender();
+    String getRandomName();
 }

@@ -8,6 +8,6 @@ import java.util.List;
 public interface CarService {
 
     List<CarWeb> alLCars();
-    CarWeb carById(long id);
+    CarWeb carById(String id);
 
 }

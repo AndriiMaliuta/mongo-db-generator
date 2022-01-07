@@ -1,5 +1,6 @@
 package com.anma.sb.mongodbgenerator.models;
 
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -21,6 +22,23 @@ public class Car {
     private int maxSpeed;
     private int age;
     private String personId;
+
+    public Car() {
+    }
+
+    public Car(Car car, String persdonId) {
+        this.setCarId(car.getCarId() + 1);
+        this.setMaxSpeed(RandomUtils.nextInt(150, 300));
+        this.setModel(car.getModel());
+        this.setColor(car.getColor());
+        this.setRegistry(car.getRegistry());
+        this.setOrigin(car.getOrigin());
+        this.setCreatedAt(LocalDateTime.now());
+        this.setCountryCodes(car.getCountryCodes());
+        this.setMaxSpeed(RandomUtils.nextInt(140, 300));
+        this.setAge(RandomUtils.nextInt(1, 40));
+        this.setPersonId(persdonId);
+    }
 
     @Override
     public String toString() {

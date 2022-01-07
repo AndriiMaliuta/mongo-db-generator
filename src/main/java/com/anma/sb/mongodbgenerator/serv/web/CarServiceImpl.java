@@ -22,7 +22,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarWeb carById(long id) {
+    public CarWeb carById(String id) {
         return null;
     }
 }

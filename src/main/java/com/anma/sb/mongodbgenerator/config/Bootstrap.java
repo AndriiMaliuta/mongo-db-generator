@@ -1,9 +1,11 @@
 package com.anma.sb.mongodbgenerator.config;
 
 import com.anma.sb.mongodbgenerator.models.Car;
+import com.anma.sb.mongodbgenerator.models.Person;
 import com.anma.sb.mongodbgenerator.repo.*;
 import com.anma.sb.mongodbgenerator.serv.convert.*;
 import com.anma.sb.mongodbgenerator.serv.web.*;
+import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -64,14 +66,21 @@ public class Bootstrap implements CommandLineRunner {
     private void loadData() {
 
         // CAR
+//        for (int i = 0; i < 100; i++) {
+//                Car car = carRepo.findAll().get(RandomUtils.nextInt(1, 120));
+//                Car newCar = new Car(car, personService.getPersRandomId());
+//                logger.info("Car saved " + newCar.toString());
+//                carRepo.save(newCar);
+//        }
 
-        carService.alLCars().forEach(cw -> {
-            Car car = carConverter.convert(cw);
-            System.out.println(car);
-            carRepo.save(car);
-        });
+        // initial
+//        carService.alLCars().forEach(cw -> {
+//            Car car = carConverter.convert(cw);
+//            logger.info(car);
+//            carRepo.save(car);
+//        });
 
-        // City
+        // CITY
 
 //        cityService.allCities().forEach(cw -> {
 //            City city = cityConverter.convert(cw);
@@ -88,8 +97,12 @@ public class Bootstrap implements CommandLineRunner {
 //        personService.allPersons().forEach(p -> {
 //            personRepo.save(personConverter.convert(p));
 //        });
+        for (int i = 0; i < 500; i++) {
+            Person person = personService.addPerson();
+            logger.info("Person saved " + person);
+        }
 
-        // create Countries
+        // Countries
 //        countryService.allCountries().forEach( cw -> {
 //            Country country = countryConverter.convert(cw);
 //            countryRepo.save(country);

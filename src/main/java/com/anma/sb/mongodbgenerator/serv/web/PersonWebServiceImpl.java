@@ -4,6 +4,7 @@ import com.anma.sb.mongodbgenerator.models.Person;
 import com.anma.sb.mongodbgenerator.models.web.PersonWeb;
 import com.anma.sb.mongodbgenerator.models.web.PersonWebArray;
 import com.anma.sb.mongodbgenerator.repo.PersonRepo;
+import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -72,6 +74,44 @@ public class PersonWebServiceImpl implements PersonWebService {
                 .stream()
                 .map(Person::getPersonId)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Person addPerson() {
+
+        Person fromDb = personRepo.findById(getPersRandomId()).orElseThrow(RuntimeException::new);
+        Person person = new Person();
+        person.setCountryId(fromDb.getCountryId());
+        person.setCreatedAt(LocalDateTime.now());
+        person.setEngaged(fromDb.isEngaged());
+        person.setAge(RandomUtils.nextInt(4, 105));
+        person.setStatus(fromDb.getStatus());
+        person.setCountryCode(fromDb.getCountryCode());
+        person.setName(getRandomName());
+        person.setFullName(getRandomName());
+        person.setEmail(getRandomEmail());
+        person.setCars(RandomUtils.nextInt(0, 7));
+        person.setGender(getRandomGender());
+
+        log.info("Person saved " + person.toString());
+        personRepo.save(person);
+
+        return person;
+    }
+
+    private String getRandomEmail() {
+        return "";  // todo
+    }
+
+    @Override
+    public String getRandomGender() {
+        String [] genders = {"male", "female"};
+        return genders[RandomUtils.nextInt(0, 2)];
+    }
+
+    @Override
+    public String getRandomName() {
+        return personRepo.findById(getPersRandomId()).get().getName();
     }
 
     @Override
