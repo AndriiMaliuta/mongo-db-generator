@@ -97,10 +97,10 @@ public class Bootstrap implements CommandLineRunner {
 //        personService.allPersons().forEach(p -> {
 //            personRepo.save(personConverter.convert(p));
 //        });
-        for (int i = 0; i < 500; i++) {
-            Person person = personService.addPerson();
-            logger.info("Person saved " + person);
-        }
+//        for (int i = 0; i < 500; i++) {
+//            Person person = personService.addPerson();
+//            logger.info("Person saved " + person);
+//        }
 
         // Countries
 //        countryService.allCountries().forEach( cw -> {
