@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,14 +28,22 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<CityWeb> allCities() {
+
         List<CityWeb> cities = new ArrayList<>();
+
         List<String> capitals = countryRepo.findAll()
                 .stream().map(Country::getCapital).collect(Collectors.toList());
+
         capitals.forEach(cap -> {
             try {
                 if (cap != null) {
-                    CityWeb[] caps = template.getForObject(URL + cap, CityWeb[].class);
-                    cities.add(caps[0]);
+
+                    CityWeb[] cityWebArr = webClient.get().uri(URI.create(URL + cap)).retrieve().bodyToMono(CityWeb[].class).block();
+                    CityWeb cityWeb = cityWebArr[0];
+
+                    System.out.println(cityWeb);
+                    cities.add(cityWeb);
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

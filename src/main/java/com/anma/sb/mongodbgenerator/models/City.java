@@ -18,19 +18,36 @@ public class City {
     private String continent;
     private LocalDateTime createdAt;
     private String countryId;
+    private String region;
+    private String subregion;
+    private String status;
+    private String capital;
+    private boolean independent;
+    private boolean unMember;
     private long population;
+    private long area;
 
     public City() {
     }
 
-    public City(String id, String name, String code, String continent, LocalDateTime createdAt, String countryId, long population) {
-        this.id = id;
-        this.name = name;
-        this.code = code;
-        this.continent = continent;
-        this.createdAt = createdAt;
-        this.countryId = countryId;
-        this.population = population;
+    @Override
+    public String toString() {
+        return "City{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", continent='" + continent + '\'' +
+                ", createdAt=" + createdAt +
+                ", countryId='" + countryId + '\'' +
+                ", region='" + region + '\'' +
+                ", subregion='" + subregion + '\'' +
+                ", status='" + status + '\'' +
+                ", capital='" + capital + '\'' +
+                ", independent=" + independent +
+                ", unMember=" + unMember +
+                ", population=" + population +
+                ", area=" + area +
+                '}';
     }
 
     public String getId() {
@@ -81,11 +98,67 @@ public class City {
         this.countryId = countryId;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getSubregion() {
+        return subregion;
+    }
+
+    public void setSubregion(String subregion) {
+        this.subregion = subregion;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
+    public boolean isIndependent() {
+        return independent;
+    }
+
+    public void setIndependent(boolean independent) {
+        this.independent = independent;
+    }
+
+    public boolean isUnMember() {
+        return unMember;
+    }
+
+    public void setUnMember(boolean unMember) {
+        this.unMember = unMember;
+    }
+
     public long getPopulation() {
         return population;
     }
 
     public void setPopulation(long population) {
         this.population = population;
+    }
+
+    public long getArea() {
+        return area;
+    }
+
+    public void setArea(long area) {
+        this.area = area;
     }
 }

@@ -1,7 +1,9 @@
 package com.anma.sb.mongodbgenerator.serv.web;
 
+import com.anma.sb.mongodbgenerator.models.Country;
 import com.anma.sb.mongodbgenerator.models.web.CountryWeb;
 import com.anma.sb.mongodbgenerator.repo.CountryRepo;
+import com.anma.sb.mongodbgenerator.serv.convert.CountryConverter;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonFactoryBuilder;
 import org.apache.commons.lang3.RandomUtils;
@@ -23,10 +25,13 @@ public class CountryServiceImpl implements CountryService {
     //https://restcountries.com/#api-endpoints-v3-name
 
     private final Environment environment;
+    private final CountryConverter countryConverter;
 
-    public CountryServiceImpl(CountryRepo countryRepo, Environment environment) {
+    public CountryServiceImpl(CountryRepo countryRepo,
+                              Environment environment, CountryConverter countryConverter) {
         this.countryRepo = countryRepo;
         this.environment = environment;
+        this.countryConverter = countryConverter;
     }
 
     @Override
@@ -40,8 +45,13 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
+    public Country getByCapital(String capital) {
+        return countryRepo.findByCapital(capital);
+    }
+
+    @Override
     public CountryWeb getById(String id) {
-        return null;
+        return countryConverter.convert(countryRepo.findById(id).get());
     }
 
 

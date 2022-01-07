@@ -1,5 +1,6 @@
 package com.anma.sb.mongodbgenerator.config;
 
+import com.anma.sb.mongodbgenerator.models.City;
 import com.anma.sb.mongodbgenerator.repo.CatRepo;
 import com.anma.sb.mongodbgenerator.repo.CityRepo;
 import com.anma.sb.mongodbgenerator.repo.CountryRepo;
@@ -65,7 +66,11 @@ public class Bootstrap implements CommandLineRunner {
 
         // City
 
-        cityService.allCities().forEach(System.out::println);
+        cityService.allCities().forEach(cw -> {
+            City city = cityConverter.convert(cw);
+            System.out.println(city);
+            cityRepo.save(city);
+        });
 
         // Create CATS
 //        catService.allCats().forEach(catWeb -> {
