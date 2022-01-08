@@ -23,12 +23,12 @@ spring:
       on-profile: cloud
   data:
     mongodb:
-      database: test
-      username: "andriim"
-      password: ${MONGO_PASS}
-      host: "cluster0.t1yi6.mongodb.net"
-      port: 27017
-#      uri: "mongodb+srv://andriim:${MONGO_PASS}@cluster0.t1yi6.mongodb.net/test"
+#      database: people
+#      username: "andriim"
+#      password: ${MONGO_PASS}
+#      host: "cluster0.t1yi6.mongodb.net"
+#      port: 27017
+      uri: "mongodb+srv://andriim:${MONGO_PASS}@cluster0.t1yi6.mongodb.net/people"
 links:
   cats: "https://api.thecatapi.com/v1/breeds"
   countries: "https://restcountries.com/v3.1/all"

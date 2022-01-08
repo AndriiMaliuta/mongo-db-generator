@@ -1,6 +1,7 @@
 package com.anma.sb.mongodbgenerator.config;
 
 import com.anma.sb.mongodbgenerator.models.Car;
+import com.anma.sb.mongodbgenerator.models.Country;
 import com.anma.sb.mongodbgenerator.models.Person;
 import com.anma.sb.mongodbgenerator.repo.*;
 import com.anma.sb.mongodbgenerator.serv.convert.*;
@@ -103,10 +104,10 @@ public class Bootstrap implements CommandLineRunner {
 //        }
 
         // Countries
-//        countryService.allCountries().forEach( cw -> {
-//            Country country = countryConverter.convert(cw);
-//            countryRepo.save(country);
-//        });
+        countryService.allCountries().forEach( cw -> {
+            Country country = countryConverter.convert(cw);
+            countryRepo.save(country);
+        });
 
     }
 }
