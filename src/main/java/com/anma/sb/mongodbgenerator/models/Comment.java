@@ -6,10 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
-@Document(value = "comments")
+@Document(collection = "comments")
 public class Comment {
 
-    @Id
     @Field("commentId")
     public String id;
     public String body;

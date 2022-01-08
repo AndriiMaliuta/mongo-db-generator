@@ -2,11 +2,10 @@ package com.anma.sb.mongodbgenerator.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
-@Document
+@Document(collection = "person")
 public class Person {
 
     @Id
@@ -26,8 +25,6 @@ public class Person {
 //    private List<Cat> cats;
 //    @Field(name="country_id")
     private String countryId;
-//    private Country country;
-
 
     public String getPersonId() {
         return personId;

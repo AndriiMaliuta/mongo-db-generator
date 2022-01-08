@@ -37,7 +37,7 @@ public class CatToWebCatImpl implements CatToWebCat {
         cat.setBreed(Faker.instance().cat().breed());
         cat.setRegistry(Faker.instance().cat().registry());
         cat.setPersonId(personWebService.getPersRandomId());        // todo - change to get real ids
-        System.out.println("CatWeb converted to Cat");
+        System.out.println("CatWeb converted to Cat " + cat);
         return cat;
     }
 

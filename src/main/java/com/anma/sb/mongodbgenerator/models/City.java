@@ -1,6 +1,5 @@
 package com.anma.sb.mongodbgenerator.models;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -9,7 +8,6 @@ import java.time.LocalDateTime;
 @Document(value = "cities")
 public class City {
 
-    @Id
     @Field("cityId")
     private String id;
     private String name;
